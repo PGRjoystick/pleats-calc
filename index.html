@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pleats Calculator</title>
+    <style>
+	@import "https://fonts.googleapis.com/css?family=Quicksand";
+	*,
+	*::before,
+	*::after {
+	  box-sizing: border-box;
+	}
+
+	html {
+	  background-color: #111213;
+	}
+
+	body {
+	  font-family: "Quicksand", sans-serif;
+	  font-weight: 500;
+	  -webkit-font-smoothing: antialiased;
+	  -moz-osx-font-smoothing: grayscale;
+	  text-rendering: optimizeLegibility;
+	}
+
+	h1 {
+	  font-weight: 700;
+	  color: #b4c1cc;
+	  text-align: center;
+	  line-height: 1.5em;
+	  margin-bottom: 1.2em;
+	  margin-top: 0.2em;
+	}
+	
+	span {
+		color: #fff;
+	}
+
+	a {
+	  font-size: 0.98em;
+	  color: #8a97a0;
+	  text-decoration: none;
+	}
+	a:hover {
+	  color: green;
+	}
+
+	.container {
+	  display: flex;
+	  -webkit-display: box;
+	  -moz-display: box;
+	  -ms-display: flexbox;
+	  -webkit-display: flex;
+	  flex-wrap: wrap;
+	  justify-content: center;
+	  align-content: center;
+	  padding: 6%;
+	  margin: 0;
+	}
+
+	form {
+	  background-color: #252528;
+	  padding: 2em;
+	  padding-bottom: 3em;
+	  border-radius: 8px;
+	  max-width: 400px;
+	  display: flex;
+	  flex-wrap: wrap;
+	  flex-direction: column;
+	  justify-content: center;
+	  box-shadow: 0 10px 40px -14px rgba(0, 0, 0, 0.25);
+	  display: flex;
+	  flex-wrap: wrap;
+	  flex-direction: column;
+	}
+	form input {
+	  color: #fff;
+	  background-color: #151414;
+	  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
+	  border: none;
+	  border-radius: 4px;
+	  padding: 1em;
+	  margin-bottom: 1.2em;
+	  width: 100%;
+	}
+	form input:focus {
+	  outline: none;
+	}
+
+	.button {
+	  font-weight: 600;
+	  text-align: center;
+	  font-size: 19px;
+	  color: #FFF;
+	  background-color: #13181c;
+	  width: 100%;
+	  border: none;
+	  border-radius: 4px;
+	  padding: 0.8em;
+	  margin-top: 1em;
+	  margin-bottom: 1em;
+	  cursor: pointer;
+	  overflow: hidden;
+	  transition: all 200ms ease-in-out;
+	  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
+	}
+	.button:hover {
+	  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.3);
+	  transform: translateY(-4px);
+	}
+	.button span {
+	  position: relative;
+	  z-index: 1;
+	}
+	.button .circle {
+	  position: absolute;
+	  z-index: 0;
+	  background-color: #35A556;
+	  border-radius: 50%;
+	  transform: scale(0);
+	  opacity: 5;
+	  height: 50px;
+	  width: 50px;
+	}
+	.button .circle.animate {
+	  animation: grow 0.5s linear;
+	}
+	@keyframes grow {
+	  to {
+		transform: scale(2.5);
+		opacity: 0;
+	  }
+	}
+	.button .signup-message {
+	  display: flex;
+	  flex-wrap: wrap;
+	  flex-direction: row;
+	  justify-content: space-between;
+	}
+	</style>
+    <script>
+	function calcREM () {
+
+	  let k_pinggang = null,
+		  j_lipatan = null,
+		  b_lipatan = null,
+		  pinggang = parseInt(document.getElementById("pinggang").value),
+		  kain = parseInt(document.getElementById("kain").value),
+		  jarak = parseInt(document.getElementById("jarak").value),
+		  hasil = document.getElementById("hasil");
+
+
+	j_lipatan = pinggang / jarak;
+	k_pinggang = kain - pinggang;
+	b_lipatan = k_pinggang / j_lipatan
+
+ 
+	hasil.innerHTML = "<br><br> Besar Lipatan dalam = " + b_lipatan + 
+					  "<br> Jumlah Lipatan = " + j_lipatan ;
+					  
+	return false;
+
+}
+	</script>
+  </head>
+  <body>
+   <div class="container">
+  <form id="rem-form" onsubmit="return calcREM();">
+    <h1>
+      Pleats Calculator
+    </h1>
+    <div class="form-content">
+      <input id="pinggang" type="number" required  placeholder="Lingkar Pinggang (CM)"/>
+      <input id="kain" type="number" required placeholder="Lebar Kain (CM)"/>
+       <input id="jarak" type="number" required placeholder="Jarak Lipatan (CM)"/>
+      <br />
+      <input class="button" type="submit" value="Hitung Lipatan"/>
+      </div>
+    <span id="hasil"></span>
+      <br />
+    </div>
+  </form>
+</div>
+  </body>
+</html>
